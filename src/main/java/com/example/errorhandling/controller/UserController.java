@@ -27,9 +27,9 @@ public class UserController {
         return new ResponseEntity<>(service.getAllUsers(), HttpStatus.OK);
     }
 
-    @GetMapping("/hello")
-    public String index() {
-        return "Greetings from Spring Booooot!";
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById (@PathVariable int id){
+        return new ResponseEntity<>(service.getUserId(id), HttpStatus.OK);
     }
 
 
