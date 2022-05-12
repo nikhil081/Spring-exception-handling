@@ -5,10 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -19,8 +16,12 @@ import javax.validation.constraints.NotNull;
 public class User {
     @Id
     @GeneratedValue
+    @Column(name = "id")
     private int userId;
+    @Column(name = "name")
     private String name;
+    @Column(name = "gender")
     private String gender;
+    @Column(name = "nationality")
     private String nationality;
 }
