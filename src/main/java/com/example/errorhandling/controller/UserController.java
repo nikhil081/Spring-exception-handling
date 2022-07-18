@@ -23,7 +23,7 @@ public class UserController {
         return new ResponseEntity<>(service.saveUser(userDto), HttpStatus.CREATED);
     }
 
-    @GetMapping("/fetchall")
+    @GetMapping("/fetchal")
     public ResponseEntity<List<User>> getAllUsers (){
         return new ResponseEntity<>(service.getAllUsers(), HttpStatus.OK);
     }
@@ -31,6 +31,11 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById (@PathVariable int id){
         return new ResponseEntity<>(service.getUserId(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/findGender/{gender}")
+    public ResponseEntity<List<User>> findGender (@PathVariable String gender){
+        return new ResponseEntity<>(service.getUsersGender(gender), HttpStatus.OK);
     }
 
 

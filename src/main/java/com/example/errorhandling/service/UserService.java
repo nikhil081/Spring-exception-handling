@@ -26,4 +26,9 @@ public class UserService {
     public User getUserId(int id){
         return userRepository.findByUserId(id);
     }
+
+    public List<User> getUsersGender(String gender){
+        return userRepository.findByGender(gender);
+    }
+
 }
