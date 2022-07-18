@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -27,7 +28,7 @@ public class UserService {
         return userRepository.findByUserId(id);
     }
 
-    public List<User> getUsersGender(String gender){
+    public Optional<List<User>> getUsersGender(String gender){
         return userRepository.findByGender(gender);
     }
 

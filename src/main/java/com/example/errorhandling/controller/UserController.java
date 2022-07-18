@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
@@ -35,7 +37,11 @@ public class UserController {
 
     @GetMapping("/findGender/{gender}")
     public ResponseEntity<List<User>> findGender (@PathVariable String gender){
-        return new ResponseEntity<>(service.getUsersGender(gender), HttpStatus.OK);
+        Optional<List<User>> list = service.getUsersGender(gender);
+        if(!list.isPresent()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"not found");
+        }
+        return new ResponseEntity<>(list.get(), HttpStatus.OK);
     }
 
 
